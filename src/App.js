@@ -6,7 +6,8 @@ import SearchBar from '../src/components/SearchBar/SearchBar';
 import Yelp from '../src/util/Yelp';
 
 class App extends Component {
-  constuctor() {
+  constructor(props) {
+    super(props);
     this.state = {
       businesses: []
     }
@@ -14,7 +15,7 @@ class App extends Component {
   }
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
-      Yelp.setState({businessess: Yelp.state.businesses})
+      this.setState({businessess: this.state.businesses})
     })
   }
   render() {
