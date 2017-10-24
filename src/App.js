@@ -5,10 +5,6 @@ import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
 import Yelp from '../src/util/Yelp';
 
-const business = {
-
-}
-
 class App extends Component {
   constuctor() {
     this.state = {
@@ -18,7 +14,7 @@ class App extends Component {
   }
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
-      setState({businessess: this.state.businesses})
+      Yelp.setState({businessess: Yelp.state.businesses})
     })
   }
   render() {
@@ -26,7 +22,7 @@ class App extends Component {
       <div className="App">
   <h1>ravenous</h1>
   <SearchBar searchYelp={this.searchYelp}/>
-  <BusinessList businesses={businesses}/>
+  <BusinessList businesses={this.state.businesses}/>
 </div>
     );
   }
